@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: myapp-pod #str
+  labels: #dict (key value)
+    app: myapp 
+    type: front-end
+
+spec:
+  containers: #List/Array of pods within a pods
+    - name: nginx-container
+      image: nginx
+  restartPolicy: Always

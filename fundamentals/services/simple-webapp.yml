@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30080  # user end port
+    port: 8080 # port inside service 
+    targetPort: 8080 # port to pods 
+  selector: # type for mapping to pods
+    name: simple-webapp
+  type: NodePort
+
+# when describe service is run pods of IP is received as Endpoints.

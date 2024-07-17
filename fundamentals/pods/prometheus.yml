@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-prometheus-pod
+  labels:
+    app: prometheus
+    tier: monitoring
+spec:
+  containers:
+    - name: prometheus-container
+      image: prom/prometheus:v2.21.0
+

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+spec:
+  selector:
+    matchLabels:
+      app: my-deployment
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-deployment
+    spec:
+       containers:
+        - name: nginx-container
+          image: nginx
+       affinity: # always check the indundation
+           nodeAffinity:
+             requiredDuringSchedulingIgnoredDuringExecution:
+               nodeSelectorTerms:
+                 - matchExpressions:
+                   - key: color  # label added as blue
+                     operator: In
+                     values:
+                       - blue

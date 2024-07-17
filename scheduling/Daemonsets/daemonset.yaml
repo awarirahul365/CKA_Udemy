@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet # All replicas of Daemonset has each on one node atleast. If node delete then pod also delete/
+metadata:
+  name: elasticsearch
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: monitoring
+  template:
+    metadata:
+      labels:
+        app: monitoring
+    spec:
+      containers:
+        - name: elasticsearchcontainer
+          image: registry.k8s.io/fluentd-elasticsearch:1.20

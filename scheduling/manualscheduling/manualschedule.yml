@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  -  image: nginx
+     name: nginx
+  nodeName: controlplane # specifing nodeName in config which can be seen in describe option where the pod should be set in worker node
+  
